@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCAA - Sistema de Controle de Atividades Acadêmicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>SCAA</h1>
+                <p>Sistema de Controle de Atividades Acadêmicas</p>
+            </div>
+            <div class="user-info">
+                <span class="user-name">Débora Ester Silva</span>
+                <span class="user-course">Desenvolvimento Web</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section class="form-section">
+            <div class="card">
+                <h2>Cadastrar Nova Atividade</h2>
+                <form id="form-atividade">
+                    <div class="form-group">
+                        <label for="titulo">Título da Atividade *</label>
+                        <input type="text" id="titulo" name="titulo" required placeholder="Ex: Palestra sobre Inovação">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="tipo">Tipo de Atividade *</label>
+                            <select id="tipo" name="tipo" required>
+                                <option value="" disabled selected>Selecione o tipo</option>
+                                <option value="Palestra">Palestra</option>
+                                <option value="Workshop">Workshop</option>
+                                <option value="Projeto de Extensão">Projeto de Extensão</option>
+                                <option value="Minicurso">Minicurso</option>
+                                <option value="Iniciação Científica">Iniciação Científica</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group half">
+                            <label for="data">Data de Realização *</label>
+                            <input type="date" id="data" name="data" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carga-horaria">Carga Horária (horas) *</label>
+                        <input type="number" id="carga-horaria" name="carga-horaria" min="1" step="0.5" required placeholder="Ex: 4">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição / Anotações *</label>
+                        <textarea id="descricao" name="descricao" rows="4" required placeholder="Descreva brevemente a atividade realizada..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Cadastrar Atividade</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="list-section">
+            <div class="dashboard-cards">
+                <div class="stat-card">
+                    <h3>Total de Horas</h3>
+                    <p class="stat-value" id="total-horas">0h</p>
+                    <span class="stat-label">Aprovadas</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Atividades</h3>
+                    <p class="stat-value" id="total-atividades">0</p>
+                    <span class="stat-label">Cadastradas</span>
+                </div>
+            </div>
+
+            <div class="card mt-20">
+                <div class="card-header">
+                    <h2>Histórico de Atividades</h2>
+                    <div class="filter-group">
+                        <select id="filtro-status">
+                            <option value="TODOS">Todos os Status</option>
+                            <option value="APROVADA">Aprovadas</option>
+                            <option value="PENDENTE">Pendentes</option>
+                            <option value="RECUSADA">Recusadas</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table id="tabela-atividades">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Título / Tipo</th>
+                                <th>Carga Horária</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-atividades">
+                            <!-- As atividades serão inseridas aqui via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="empty-state" class="empty-state hidden">
+                    <p>Nenhuma atividade encontrada.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 SCAA - Projeto Integrado Inovação - Desenvolvimento Web</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
